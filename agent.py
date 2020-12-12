@@ -9,7 +9,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 BUFFER_SIZE = int(1e5)
-BATCH_SIZE = 64
+BATCH_SIZE = 256
 GAMMA = 0.99
 TAU = 1e-3
 LR = 5e-4
@@ -117,6 +117,10 @@ class Agent():
 		"""
 		for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
 			target_param.data.copy_(tau*local_param.data + (1.0-tau)*target_param.data)
+
+
+	def save(self):
+		torch.save(self.qnetwork_local.state_dict(), 'trained_model.pt')
 
 
 
