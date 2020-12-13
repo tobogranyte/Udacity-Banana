@@ -21,6 +21,10 @@ The environment is a square containing blue and yellow bananas which, as the age
 
 To run, the project requires a correctly configured Python environment. Follow the instructions for dependencies [here](https://github.com/udacity/deep-reinforcement-learning#dependencies) to do this.
 
+You will also need to install `unityagents`. You can do this with the following command:
+
+    pip install unityagents
+
 ## Environments
 
 The project is configured to run on either Linux or Mac. In the root folder of the project are the two supported Banana environments:
@@ -30,3 +34,19 @@ The project is configured to run on either Linux or Mac. In the root folder of t
 
 If each of these are present in the root folder (as they are when the project is clones), the project should run correctly for Linux and Mac.
 
+# Running the Code
+
+## From Jupyter Notebook
+
+* Fromm the `Banana Project` directory, open the Jupyter notebook `Banana_Project.ipynb`.
+* Make sure you are using a kernel in the drlnd environment you created [here](https://github.com/udacity/deep-reinforcement-learning#dependencies).
+* If a different kernel is active, under the `Kernel` menu, select `Change kernel` and choose `drnld`.
+* Run each of the cells in `Setup Blocks`
+* To train the agent, run the final block in `Train the Agent`
+
+## From Command Line
+
+* Navigate to the root folder of the Banana Project repository.
+* Enter the following:
+
+    python Banana_Project.py
