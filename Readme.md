@@ -38,7 +38,7 @@ If each of these are present in the root folder (as they are when the project is
 
 ## From Jupyter Notebook
 
-* From the `Banana Project` directory, open the Jupyter notebook `Banana_Project.ipynb`.
+* From the `Banana Project` directory, open the Jupyter notebook `Navigation.ipynb`.
 * Make sure you are using a kernel in the drlnd environment you created [here](https://github.com/udacity/deep-reinforcement-learning#dependencies).
 * If a different kernel is active, from the menu, select Kernel > Change kernel > drlnd.
 * Run each of the cells in **Setup Blocks**
@@ -48,4 +48,5 @@ If each of these are present in the root folder (as they are when the project is
 
 * From the `Banana Project` directory, enter the following:
 
-    python Banana_Project.py
+    python Navigation.py
+  

@@ -21,7 +21,7 @@ brain_name = env.brain_names[0]
 brain = env.brains[brain_name]
 # Set up the brain
 
-def dqn(n_episodes = 200000, eps_start = 1.0, eps_end=0.01, eps_decay=0.995):
+def dqn(n_episodes = 5000, eps_start = 1.0, eps_end=0.01, eps_decay=0.995):
     """Deep Q-Learning.
     
     Params
@@ -37,10 +37,10 @@ def dqn(n_episodes = 200000, eps_start = 1.0, eps_end=0.01, eps_decay=0.995):
     scores_means = []                   # list containing average scores from the previous 100 scores from the last episode
     eps = eps_start                     # initialize epsilon
 
-    blues_window = deque(maxlen=100)
-    blues_means = []
-    yellows_window = deque(maxlen=100)
-    yellows_means = []
+    blues_window = deque(maxlen=100)    # last 100 blue banana totals
+    blues_means = []                    # list containing average number of blues
+    yellows_window = deque(maxlen=100)  # last 100 yellow banana totals
+    yellows_means = []                  # list containing average number of yellows
     """Track yellow and blue bananas per episode and averages of each over a 100 episode window
     
         blues_window: number of blue bananas collected in each of the last 100 episodes
@@ -79,9 +79,9 @@ def dqn(n_episodes = 200000, eps_start = 1.0, eps_end=0.01, eps_decay=0.995):
         yellows_means.append(np.mean(yellows_window)) # get the yellows average from the last 100 episodes and append to yellow averages
         eps = max(eps_end, eps_decay * eps)  # decrease epsilon
         if i_episode % 100 == 0:
-            print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
-        if np.mean(scores_window) > 13:
-            print("Solved in {} episodes".format(i_episode))
+            print('\rEpisode {}\tAverage Score: {:.2f}  '.format(i_episode, np.mean(scores_window)))
+        if np.mean(scores_window) > 13:               # first solved for +13
+            print("Solved for +13 in {} episodes  ".format(i_episode))
             break
     return scores, scores_means, blues_means, yellows_means
 
@@ -100,9 +100,9 @@ plt.show()
 # plot the average scores and average blues and yellows for the last 100
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.plot(np.arange(len(scores_means)), scores_means, 'k-')
-ax.plot(np.arange(len(blues_means)), blues_means, 'b-')
-ax.plot(np.arange(len(yellows_means)), yellows_means, 'y-')
+ax.plot(np.arange(len(scores_means)), scores_means, 'k-')    # plot a black line for average reward
+ax.plot(np.arange(len(blues_means)), blues_means, 'b-')      # plot a blue line for average number of blue bananas
+ax.plot(np.arange(len(yellows_means)), yellows_means, 'y-')  # plot a yellow line for average number of yellow bananas
 plt.ylabel('Average score')
 plt.xlabel('Episode #')
 plt.show()
